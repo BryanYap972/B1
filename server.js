@@ -9,8 +9,7 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-const uri =
-  "mongodb+srv://BryanYap:97991712Ff@cluster0.s0cjc.mongodb.net/test?retryWrites=true&w=majority";
+const uri = process.env.ATLAS_URI;
 mongoose.connect(uri, {
   useNewUrlParser: true,
   useCreateIndex: true,
@@ -29,3 +28,5 @@ app.use("/users", usersRouter);
 app.listen(port, () => {
   console.log("listening");
 });
+
+module.exports = app;
